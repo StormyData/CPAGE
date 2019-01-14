@@ -1,0 +1,22 @@
+{
+ "name":"Captcha solve",
+ "manifest_version":2,
+ "version":"0.0.0.0", 
+ "content_scripts":[
+	{
+		"matches":["https://iuczniowie.progman.pl/*"],
+		"js":["content.js"]
+	}
+ ],
+ "background":{
+	"scripts": ["background.js"]
+ },
+ "permissions": [
+    "webRequest",
+	"webRequestBlocking",
+	"activeTab",
+	"https://iuczniowie.progman.pl/*",
+	"https://raw.githubusercontent.com/AmbitiousST/CPAGE/master/*.json",
+	"storage"
+ ]
+}
