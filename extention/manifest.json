@@ -11,6 +11,10 @@
  "background":{
 	"scripts": ["background.js"]
  },
+ "icons":{
+	"96": "i96.png",
+	"48": "i48.png"
+ },
  "permissions": [
     "webRequest",
 	"webRequestBlocking",

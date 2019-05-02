@@ -3,7 +3,7 @@ if(typeof browser==="undefined"){
 }
 function getDatabase(x){
 	browser.tabs.query({active: true, currentWindow: true},function(tabs){
-		if(typeof x.idziennik_base === "undefined"){
+		if(typeof x.idziennik_base === "undefined" || Date.now() - x.idziennik_date > 1000*60*60*24*7){//auto refresh every 7 days
 			if(browser!=chrome)
 				console.log("downloading database...");
 			var xhr = new XMLHttpRequest();
@@ -12,6 +12,7 @@ function getDatabase(x){
 			browser.tabs.sendMessage(tabs[0].id, {greeting: xhr.response}, function(response){});
 			let idziennik_base = {};
 			idziennik_base["idziennik_base"] = xhr.response;
+			idziennik_base["idziennik_date"] = Date.now();
 			browser.storage.local.set(idziennik_base);
 		}else{
 			browser.tabs.sendMessage(tabs[0].id, {greeting: x.idziennik_base}, function(response){});
@@ -21,9 +22,9 @@ function getDatabase(x){
 browser.webRequest.onHeadersReceived.addListener(
 	function(e){
 		if(browser==chrome){
-				browser.storage.local.get(["idziennik_base"],getDatabase);
+				browser.storage.local.get(["idziennik_base","idziennik_date"],getDatabase);
 		}else{
-				browser.storage.local.get("idziennik_base").then(getDatabase);
+				browser.storage.local.get(["idziennik_base","idziennik_date"]).then(getDatabase);
 		}
 		
 	},
