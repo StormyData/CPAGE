@@ -1,7 +1,8 @@
 I had planned cleaning this code for the longest time, but I decided to keep it that way,
 to serve as a reminder for me why you should never write a single function program, with
-all names no longer than 2 letters, for anything really, besides this code has outlived 
-it's purpose as no one will ever use it again, not even us, the creators of this mess
+all names no longer than 2 letters, for anything really
+besides this code has outlived it's purpose as no one will ever use it again, not even us,
+the creators of this mess
 
 or it can warn against ever trying to write meaningful code while being dead tired,
 I guess
